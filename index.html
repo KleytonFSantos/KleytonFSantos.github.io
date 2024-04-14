@@ -8,11 +8,27 @@
 </head>
 <body>
     <div id="example-container"></div>
+    <div id="example-invalid"></div>
+    <div id="example-intuitive"></div>
 </body>
 <script>
     window.onloadTurnstileCallback = function () {
         turnstile.render('#example-container', {
             sitekey: '1x00000000000000000000AA',
+            callback: function(token) {
+                console.log(`Challenge Success ${token}`);
+            },
+        });
+
+        turnstile.render('#example-invalid', {
+            sitekey: '2x00000000000000000000AB',
+            callback: function(token) {
+                console.log(`Challenge Success ${token}`);
+            },
+        });
+
+        turnstile.render('#example-intuitive', {
+            sitekey: '3x00000000000000000000FF',
             callback: function(token) {
                 console.log(`Challenge Success ${token}`);
             },
